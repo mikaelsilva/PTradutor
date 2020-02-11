@@ -42,10 +42,12 @@ print("Fim")
     #CRIAR UM TERCEIRO DICIONARIO/LISTA/TUPLA (DECIDIR A MELHOR ABORDAGEM) QUE CONTENHA | PALAVRA_INGLES | QTD | TRADUÇÕES |
 
 
-tabela = [{ "PALAVRA":"None-1",
+tabela = [{ "PALAVRA":None,
                 "QTD_PALAVRA":0
               }
              ]
+
+
 df = pd.DataFrame(tabela)
 df = df[["PALAVRA","QTD_PALAVRA"]]
 df.to_csv("Computer.csv",header=True,index=False)

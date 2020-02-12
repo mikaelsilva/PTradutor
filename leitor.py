@@ -10,30 +10,33 @@ reader = PyPDF2.PdfFileReader(text)
 num = reader.numPages
 lista = []
 
-for i in range(5):
+for i in range(num):
     page = reader.getPage(i)
     word = page.extractText().upper().replace(","," ").replace("."," ").replace("\n"," ")
     word = word.replace("(","").replace(")","").replace("“","").replace("”","").replace("ʽ","").replace("ʼ","")
     word = word.replace("?","").replace("!","").replace("[","").replace("]","").split(' ')
 
-    print(word)
-
     for p in word:
         lista.append(p)
         #print("--",p)
 
-print("A")
+    print(i)
+
+print("Fim da lista")
+
+
+#print("A")
 #my_list = list(dict.fromkeys(lista))
 #print(my_list)
 
 dicio = {}
 
-for i in range(50):
+for i in range(len(lista)):
     #print(i,lista[i])
     dicio[lista[i]] = lista.count(lista[i])
 
-print(dicio)
-print("Fim")
+#print(dicio)
+print("Fim do Dicionario")
 
 #print(dicio)
 #PROXIMAS ETAPAS SAO:
@@ -61,4 +64,4 @@ for chave,valor in dicio.items():
     df = df[["PALAVRA","QTD_PALAVRA"]]
     df.to_csv("Computer.csv",header=False,mode='a',index=False)
 
-
+print("Fim da tabela")

@@ -4,10 +4,10 @@ import pandas as pd
 
 path = input("Insira o path do arquivo: ")
 tipo_arquivo = input("Insira o tipo do arquivo: ")
+nome_arquivo = input("Insira o nome do arquivo final: ")
 
 #path = "c:\\Nova pasta\\\Projetos Git\\PTradutor\\Computer Organization and Design.pdf"
-
-nome_arquivo = 
+#path = "c:\\Nova pasta\\\Projetos Git\\PTradutor\\leitura.txt"
 
 if(tipo_arquivo == 'pdf'):
     text = open(path,mode='rb')
@@ -26,14 +26,7 @@ if(tipo_arquivo == 'pdf'):
             lista.append(p)
             #print("--",p)
 
-        print(i)
-
     print("Fim da lista")
-
-
-    #print("A")
-    #my_list = list(dict.fromkeys(lista))
-    #print(my_list)
 
     dicio = {}
 
@@ -41,7 +34,6 @@ if(tipo_arquivo == 'pdf'):
         #print(i,lista[i])
         dicio[lista[i]] = lista.count(lista[i])
 
-    #print(dicio)
     print("Fim do Dicionario")
 
     tabela = [{ "PALAVRA":None,
@@ -49,10 +41,9 @@ if(tipo_arquivo == 'pdf'):
                 }
                 ]
 
-
     df = pd.DataFrame(tabela)
     df = df[["PALAVRA","QTD_PALAVRA"]]
-    df.to_csv("Computer.csv",header=True,index=False)
+    df.to_csv(nome_arquivo+".csv",header=True,index=False)
 
     for chave,valor in dicio.items():
         tabela = [{ "PALAVRA":chave,
@@ -61,12 +52,50 @@ if(tipo_arquivo == 'pdf'):
                 ]
         df = pd.DataFrame(tabela)
         df = df[["PALAVRA","QTD_PALAVRA"]]
-        df.to_csv("Computer.csv",header=False,mode='a',index=False)
+        df.to_csv(nome_arquivo+".csv",header=False,mode='a',index=False)
 
-    print("Fim da tabela")
+    print("Fim da tabela por CSV")
 
 else:
     text = open(path,mode='r')
-    reader = text.read
+    reader = text.read()
+    #print(reader)
 
+    word = reader.upper().replace(","," ").replace("."," ").replace("\n"," ")
+    word = word.replace("(","").replace(")","").replace("“","").replace("”","").replace("ʽ","").replace("ʼ","")
+    word = word.replace("?","").replace("!","").replace("[","").replace("]","").split(' ')
 
+    lista = []
+    for p in word:
+        lista.append(p)
+        #print("--",p)
+
+    print("Fim da lista por TXT")
+
+    dicio = {}
+
+    for i in range(len(lista)):
+        #print(i,lista[i])
+        dicio[lista[i]] = lista.count(lista[i])
+
+    print("Fim do Dicionario por TXT")
+
+    tabela = [{ "PALAVRA":None,
+                    "QTD_PALAVRA":0
+                }
+                ]
+
+    df = pd.DataFrame(tabela)
+    df = df[["PALAVRA","QTD_PALAVRA"]]
+    df.to_csv(nome_arquivo+".csv",header=True,index=False)
+
+    for chave,valor in dicio.items():
+        tabela = [{ "PALAVRA":chave,
+                    "QTD_PALAVRA":valor
+                }
+                ]
+        df = pd.DataFrame(tabela)
+        df = df[["PALAVRA","QTD_PALAVRA"]]
+        df.to_csv(nome_arquivo+".csv",header=False,mode='a',index=False)
+
+    print("Fim da tabela por TXT")

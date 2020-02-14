@@ -14,4 +14,4 @@ dataframe_join = pd.merge(dataframe_1, dataframe_2, on='PALAVRA', how='inner')
 dataframe_join = dataframe_join.sort_values(by=['QTD_PALAVRA'],ascending=False)
 print(dataframe_join.head(10))
 
-dataframe_join.to_csv("C:\\Nova pasta\\Projetos Git\\PTradutor\\"+aux_1.split(".csv")[0]+"_Traduzido.csv")
+dataframe_join.to_csv("C:\\Nova pasta\\Projetos Git\\PTradutor\\"+aux_1.split(".csv")[0]+"_traduzido.csv")

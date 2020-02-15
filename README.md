@@ -13,8 +13,6 @@ O código *leitor.py* salva um arquivo *.csv*, com duas colunas
 
 Depois, é chamado a funçao *traduzindo*, que recebe o nome do arquivo final salvo e o nome do *Dicionario.csv* para a função *tradutozindo*<br/> 
 
-![](img/Tradutor.PNG)
-
 Salvando então um arquivo com um *nome_arquivo*+_traduzindo.csv, mostrando em ordem decrescente o número de aparações de cada palavra e suas possíveis traduções.
 
 ![](img/Tabela_2.PNG)
